@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Merchant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  # Test association
+  # ensure Merchant model has a m:m relationship with the Consumer model through transactions
+  it { should have_many(:transactions) }
+  it { should have_many(:consumers).dependent(:destroy) }
 end
