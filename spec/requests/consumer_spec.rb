@@ -19,4 +19,20 @@ RSpec.describe 'Consumer', type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'POST /consumers' do
+    let(:valid_attributes) { { first_name: 'Learn', last_name: 'Lashdsd' } }
+
+    context 'when request is valid' do
+      before { post '/consumers', params: valid_attributes }
+
+      it 'creates a consumer' do
+        expect(json['first_name']).to eq('Learn')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+  end
 end
