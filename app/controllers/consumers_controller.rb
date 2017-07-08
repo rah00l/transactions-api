@@ -1,4 +1,5 @@
 class ConsumersController < ApplicationController
+    before_action :set_consumer, only: [:update]
   # GET /consumers
   def index
     @consumers = Consumer.all
@@ -13,6 +14,8 @@ class ConsumersController < ApplicationController
 
   # PUT /consumers/:id
   def update
+    @consumer.update(consumer_params)
+    head :no_content
   end
 
   private
@@ -22,4 +25,7 @@ class ConsumersController < ApplicationController
     params.permit(:first_name, :last_name)
   end
 
+  def set_consumer
+    @consumer = Consumer.find(params[:id])
+  end
 end
