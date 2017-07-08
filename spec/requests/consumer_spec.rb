@@ -35,4 +35,25 @@ RSpec.describe 'Consumer', type: :request do
       end
     end
   end
+
+  describe 'PUT /consumers/:id' do
+    let(:valid_attributes) { { first_name: 'Shopping' } }
+
+    before { put "/consumers/#{id}", params: valid_attributes }
+
+    context 'when the record exists' do
+      it 'updates the record' do
+        expect(response.body).to be_empty
+      end
+
+      it 'updates the record with first name field' do
+        updated_consumer = Consumer.find(id)
+        expect(updated_consumer.first_name).to eq('Shopping')
+      end
+
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+    end
+  end
 end
