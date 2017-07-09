@@ -1,4 +1,5 @@
 class MerchantsController < ApplicationController
+  before_action :set_merchant, only: [:update]
     # GET /merchants
   def index
     @merchants = Merchant.all
@@ -13,6 +14,8 @@ class MerchantsController < ApplicationController
 
   # PUT /merchants/:id
   def update
+    @merchant.update(merchant_params)
+    head :no_content
   end
 
   private
@@ -20,5 +23,9 @@ class MerchantsController < ApplicationController
   def merchant_params
     # whitelist params
       params.permit(:name, :domain)
+  end
+
+  def set_merchant
+    @merchant = Merchant.find(params[:id])
   end
 end
