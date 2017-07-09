@@ -1,10 +1,10 @@
 ## Tech Specs:
-	- Ruby 2.3.3 or greater
-	- Database: sqlite / seed file (with few transactions merchants and consumers.)
-	- Framework: Rails 5.1.2
-	- Test Framework - rspec
+- Ruby 2.3.3 or greater
+- Database: sqlite / seed file (with few transactions merchants and consumers.)
+- Framework: Rails 5.1.2
+- Test Framework - rspec
 					- fixtures	factory_girl_rails
-	-	HTTP client - httpie
+-	HTTP client - httpie
 ## Commands Used
 ```
 	rails new transactions-api --api -T
@@ -34,17 +34,17 @@
 	rails g controller transactions index create update
 ```
 ## API Endpoints
-	### Consumers
+### Consumers
 		consumers GET   /consumers(.:format)     consumers#index
 			POST  /consumers(.:format)     consumers#create
 			PUT   /consumers/:id(.:format) consumers#update
 
-	### Merchants
+### Merchants
 		merchants GET   /merchants(.:format)     merchants#index
 			POST  /merchants(.:format)     merchants#create
 			PUT   /merchants/:id(.:format) merchants#update
 
-	### Transactions - (cunsumer & merchant related)
+### Transactions - (cunsumer & merchant related)
 		consumer_transactions GET   /consumers/:consumer_id/transactions(.:format)     transactions#index
 			POST  /consumers/:consumer_id/transactions(.:format)     transactions#create
 			PUT   /consumers/:consumer_id/transactions/:id(.:format) transactions#update
