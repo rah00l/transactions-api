@@ -78,4 +78,33 @@ RSpec.describe 'Transactions API' do
       end
     end
   end
+
+  describe 'PUT /consumers/:consumer_id/transactions/:id' do
+    let(:valid_attributes) { { sale_amount: '201.99' } }
+
+    before { put "/consumers/#{consumer_id}/transactions/#{id}", params: valid_attributes }
+
+    context 'when transaction exists' do
+      it 'returns status code 204' do
+        expect(response).to have_http_status(204)
+      end
+
+      it 'updates the transaction' do
+        updated_transaction = Transaction.find(id)
+        expect(updated_transaction.sale_amount.to_s).to eq('201.99')
+      end
+    end
+
+    context 'when transaction does not exist' do
+      let(:id) { 0 }
+
+      it 'returns status code 404' do
+        expect(response).to have_http_status(404)
+      end
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Transaction/)
+      end
+    end
+  end
 end
