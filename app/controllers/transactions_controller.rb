@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :get_transactable, only: [:index]
+  before_action :set_transaction, only: [:update]
   # GET /consumers/:consumer_id/transactions
   # GET /merchants/:merchant_id/transactions
   def index
@@ -13,8 +14,11 @@ class TransactionsController < ApplicationController
     json_response(@transaction, :created)
   end
 
-  # PUT /merchants/:id
+  # PUT /consumers/:consumer_id/transactions/:id
+  # PUT /merchants/:merchant_id/transactions/:id
   def update
+    @transaction.update(transaction_params)
+    head :no_content
   end
 
   private
@@ -31,4 +35,7 @@ class TransactionsController < ApplicationController
     params.permit(:consumer_id, :merchant_id, :sale_amount, :date)
   end
 
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
 end
