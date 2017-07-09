@@ -1,12 +1,12 @@
 ## Tech Specs:
-	-      Ruby 2.3.3 or greater
-	-      Database: sqlite / seed file (with few transactions merchants and consumers.)
-	-      Framework: Rails 5.1.2
-	-	   Test Framework - rspec
-				fixtures	factory_girl_rails
-	-		HTTP client - httpie
+	- Ruby 2.3.3 or greater
+	- Database: sqlite / seed file (with few transactions merchants and consumers.)
+	- Framework: Rails 5.1.2
+	- Test Framework - rspec
+					- fixtures	factory_girl_rails
+	-	HTTP client - httpie
 ## Commands Used
-	```
+```
 	rails new transactions-api --api -T
 
 	rails g model merchant name domain
@@ -32,7 +32,7 @@
 	rails g controller merchants index create update
 
 	rails g controller transactions index create update
-	```
+```
 ## API Endpoints
 	### Consumers
 		consumers GET   /consumers(.:format)     consumers#index
