@@ -19,4 +19,20 @@ RSpec.describe 'Merchant', type: :request do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'POST /merchants' do
+    let(:valid_attributes) { { name: 'Learn', domain: 'Lashdsd' } }
+
+    context 'when request is valid' do
+      before { post '/merchants', params: valid_attributes }
+
+      it 'creates a merchant' do
+        expect(json['name']).to eq('Learn')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+  end
 end
