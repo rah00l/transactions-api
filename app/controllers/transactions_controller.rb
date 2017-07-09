@@ -6,8 +6,11 @@ class TransactionsController < ApplicationController
     json_response(@transactable.transactions)
   end
 
-  # POST /merchants
+  # POST /consumers/:consumer_id/transactions
+  # POST /merchants/:merchant_id/transactions
   def create
+    @transaction = Transaction.create!(transaction_params)
+    json_response(@transaction, :created)
   end
 
   # PUT /merchants/:id
@@ -23,4 +26,9 @@ class TransactionsController < ApplicationController
       Merchant.find(params[:merchant_id])
     end
   end
+
+  def transaction_params
+    params.permit(:consumer_id, :merchant_id, :sale_amount, :date)
+  end
+
 end
