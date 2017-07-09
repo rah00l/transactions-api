@@ -61,4 +61,21 @@ RSpec.describe 'Transactions API' do
       end
     end
   end
+
+# POST a transaction to generate transaction
+  describe 'POST /consumers/:consumer_id/transactions' do
+    let(:valid_attributes) { { merchant_id: merchant_id, sale_amount: '112.34', date: '1' } }
+
+    context 'when request is valid' do
+      before { post "/consumers/#{consumer_id}/transactions", params: valid_attributes }
+
+      it 'creates a transaction' do
+        expect(json['sale_amount']).to eq('112.34')
+      end
+
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
+  end
 end
