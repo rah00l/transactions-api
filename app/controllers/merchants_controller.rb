@@ -1,6 +1,8 @@
 class MerchantsController < ApplicationController
     # GET /merchants
   def index
+    @merchants = Merchant.all
+    json_response(@merchants)
   end
 
   # POST /merchants
