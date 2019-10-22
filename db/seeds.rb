@@ -2,7 +2,7 @@
 
 ## Consumers
 c1 = Consumer.create first_name: 'Nand', last_name: 'Kishor'
-c2 = Consumer.create first_name: 'Raj', last_name: 'Kumar'*
+c2 = Consumer.create first_name: 'Raj', last_name: 'Kumar'
 c3 = Consumer.create first_name: 'Anvay', last_name: 'Lal'
 
 ## Merchants
